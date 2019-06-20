@@ -4,6 +4,7 @@ SlideShow particle for Gantry 5 (Joomla), using UIkit 3
 Hi my name is Jose Olivares, this is my new version of the slideshow Gantry 5 particle. Please endorse my skills on Linkedin (https://www.linkedin.com/in/jolivaress/)!
 
 What's new?
+
 -New options, styles  and  effects applied.
 
 -It uses the updated UIkit 3 framework.
