@@ -12,7 +12,7 @@ What's new?
 
 #Installation on Joomla:
 
-1-Copy the slideshowui3.html.twig and slideshowui3.yaml files to root/templates/TEMPLATE_DIR/custom/particles (if the particles folder does not exist, you have to create it manually)
+1-Copy the olivares_slideshow.html.twig and slideshowui3.yaml files to root/templates/TEMPLATE_DIR/custom/particles (if the particles folder does not exist, you have to create it manually)
 
 2-Copy the _slideshowui3.scss file to root/templates/TEMPLATE_DIR/custom/scss (if the scss folder does not exists, you will need to create it manually)
 

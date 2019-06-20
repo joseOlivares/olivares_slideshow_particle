@@ -1,0 +1,344 @@
+name: Olivares_SlideShow
+description: Slideshow using UIkit 3 by José Luis Olivares (https://www.linkedin.com/in/jolivaress/).
+type: particle
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable slideshow particle.
+      default: true
+
+    _note:
+      type: separator.note
+      class: alert alert-info
+      content: '<strong>This Particle requires the "UIkit 3 for Gantry5" Atom to be loaded.</strong>'
+
+    mainheading:
+      type: input.text
+      label: Title
+      description: Type in the title.
+      placeholder: 'Enter Title'
+      default: ''
+
+    introtext:
+      type: textarea.textarea
+      label: Intro Text
+      description: Type in the intro text.
+      placeholder: 'Enter Intro Text'
+      default: ''
+
+    particleintro_bg:
+      type: select.select
+      label: Particle intro BG Color
+      description: Select the background color for Title and Intro.
+      placeholder: 'Select...'
+      default: default
+      options:
+        default: Default
+        muted: Muted
+        primary: Primary
+        secondary: Secondary
+
+    height:
+      type: input.text
+      label: Slideshow Height
+      description: Set the slideshow height in pixels (do NOT type in 'px', enter just the digits). Default is 'auto'.
+      default: auto
+
+    autoplay:
+      type: select.select
+      label: Autoplay
+      description: Enable or disable the Slideshow autoplay.
+      placeholder: 'Select...'
+      default: true
+      options:
+        true: Enabled
+        false: Disabled
+
+    autoplayInterval:
+      type: input.text
+      label: Autoplay Interval
+      description: Set the timespan in miliseconds between switching slideshow items.
+      default: 8000
+
+    navigation:
+      type: select.select
+      label: Navigation
+      description: Select the Slideshow navigation.
+      placeholder: 'Select...'
+      default: arrows
+      options:
+        arrows: Arrows (Show on Hover)
+        arrowsvisible: Arrows (Always Visible)
+        dots: Dots
+        both: Both (Show on Hover)
+        bothvisible: Both (Always Visible)
+        none: None
+
+    arrowBackground:
+      type: input.text
+      label: Arrows background color
+      description: Write navigation arrow background color.
+      placeholder: 'Ex.: #0d0b1c3b'
+      default: transparent
+
+    animation:
+      type: select.select
+      label: Animation
+      description: Select the Slideshow animation.
+      placeholder: 'Select...'
+      default: fade
+      options:
+        slide: Slide
+        fade: Fade
+        scale: Scale
+        pull: Pull
+        push: Push
+
+
+    animationDuration:
+      type: input.text
+      label: Animation Duration
+      description: Set the animation duration in miliseconds.
+      default: 500
+
+    pauseOnHover:
+      type: select.select
+      label: Pause on Hover
+      description: Pause autoplay when hovering the slideshow image.
+      placeholder: 'Select...'
+      default: true
+      options:
+        true: Enabled
+        false: Disabled
+
+    fullscreen:
+      type: input.checkbox
+      label: Fullscreen
+      description: Make the Slideshow fullscreen that stretches to fill the entire viewport.
+      default: 0
+
+    css.class:
+      type: input.selectize
+      label: CSS Classes
+      description: CSS class name for the particle.
+      default:
+
+    extra:
+      type: collection.keyvalue
+      label: Tag Attributes
+      description: Extra Tag attributes.
+      key_placeholder: Key (data-*, style, ...)
+      value_placeholder: Value
+      exclude: ['id', 'class']
+
+    items:
+      type: collection.list
+      array: true
+      label: Slideshow Items
+      description: Create each slideshow item to display.
+      value: name
+      ajax: true
+
+      fields:
+
+        .image:
+          type: input.imagepicker
+          label: Image
+          description: Select an image for the slide.
+
+        .kenburns:
+          type: select.select
+          label: Ken Burns Effect
+          description: Enable or disable the Ken Burns effect for this image.
+          placeholder: 'Select...'
+          default: false
+          options:
+            true: Enabled
+            false: Disabled
+
+        .kenburnsEffects:
+          type: input.text
+          label: Kenburns Effect options
+          description: Set the Kenburns effect options (see UIkit docs).
+          default: uk-animation-reverse uk-transform-origin-center-left
+
+        .videoiframe:
+          type: textarea.textarea
+          label: Video
+          description: Paste the whole embed video iframe code (including the iframe tags) and modify it as needed.
+
+        .alt:
+          type: input.text
+          label: Image Alt Tag
+
+        .title:
+          type: input.text
+          label: Title
+
+        .link:
+          type: input.text
+          label: Title Link
+
+        .target:
+          type: select.select
+          label: Target
+          description: Target browser window when item is clicked.
+          placeholder: 'Select...'
+          default: _parent
+          options:
+            _parent: Self
+            _blank: New Window
+
+        .description:
+          type: textarea.textarea
+          label: Description
+
+        .descriptclass:
+          type: input.text
+          label: Description Text classes applied
+          default: uk-margin-remove
+
+        .content_align:
+          type: select.select
+          label: Title, Desc and Button Alignment
+          default: center
+          options:
+            center: center
+            left: left
+            right: right
+
+        .buttons:
+          type: collection.list
+          array: true
+          label: Buttons
+          description: Create each button to display.
+          value: name
+          ajax: true
+
+          fields:
+
+            .text:
+              type: input.text
+              label: Button Text
+              description: Type in the button text.
+
+            .buttonicon:
+              type: input.icon
+              label: Button Icon
+              description: Select an icon for the button.
+
+            .buttonstyle:
+              type: select.select
+              label: Button Style
+              description: Select the button style.
+              placeholder: 'Select...'
+              default: empty-light
+              options:
+                standard: Standard
+                empty: Empty
+
+            .link:
+              type: input.text
+              label: Button Link
+              description: Type in the URL.
+
+            .target:
+              type: select.select
+              label: Target
+              description: Target browser window when item is clicked.
+              placeholder: 'Select...'
+              default: _parent
+              options:
+                _parent: Self
+                _blank: New Window
+
+        .buttonsclass:
+          type: input.text
+          label: Div Button classes applied
+          default: uk-margin-remove
+
+        .overlayclass:
+          type: input.selectize
+          label: Ovarlay CSS Class
+          description: CSS classes for Overlay Div.
+
+        .overlaybackground:
+          type: select.select
+          label: Overlay background color
+          description: Select the overlay background color.
+          placeholder: 'Select...'
+          default: jl-transparent
+          options:
+            jl-transparent: transparent
+            uk-overlay-default: White
+            uk-overlay-primary: Dark
+
+        .overlayposition:
+          type: select.select
+          label: Overlay Position
+          description: Select the overlay position (Title and Description).
+          placeholder: 'Select...'
+          default: uk-position-bottom
+          options:
+            uk-position-bottom: Bottom
+            uk-position-left: Left
+            uk-position-right: Right
+            uk-position-top: Top
+            uk-position-bottom-left: Bottom Left
+            uk-position-bottom-center: Bottom Center
+            uk-position-bottom-right: Bottom Right
+            uk-position-center-left: Middle Left
+            uk-position-center: Middle Center
+            uk-position-center-right: Middle Right
+            uk-position-top-left: Top Left
+            uk-position-top-center: Top Center
+            uk-position-top-right: Top Right
+
+        .overlaytransition:
+          type: select.select
+          label: Overlay Transition
+          description: Select the overlay Transition (animation).
+          placeholder: 'Select...'
+          default: uk-transition-fade
+          options:
+            uk-transition-fade: Fade
+            uk-transition-slide-left: Slide Left
+            uk-transition-slide-left-small: Slide Left (Short)
+            uk-transition-slide-right: Slide Right
+            uk-transition-slide-right-small: Slide Right (Short)
+            uk-transition-slide-top: Slide Top
+            uk-transition-slide-top-small: Slide Top (Short)
+            uk-transition-slide-bottom: Slide Bottom
+            uk-transition-slide-bottom-small: Slide Bottom (Short)
+            uk-transition-scale-up: Scale Up
+            uk-transition-scale-down: Scale Down
+            uk-transition-slide-top-medium: Slide Top (Medium)
+            uk-transition-slide-bottom-medium: Slide Bottom (Medium)
+            uk-transition-slide-left-medium: Slide Left (Medium)
+            uk-transition-slide-right-medium: Slide Right (Medium)
+
+        .overlaywidth:
+          type: select.select
+          label: Overlay Width
+          description: Select the overlay width.
+          placeholder: 'Select...'
+          default: auto
+          options:
+            auto: Auto
+            1: 100%
+            2: 50%
+            3: 33.3%
+            4: 25%
+            5: 20%
+            6: 16.6%
+
+        .class:
+          type: input.selectize
+          label: CSS Class
