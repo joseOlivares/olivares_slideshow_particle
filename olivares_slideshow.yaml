@@ -206,46 +206,46 @@ form:
           ajax: true
 
           fields:
+            enabled:
+              .text:
+                type: input.text
+                label: Button Text
+                description: Type in the button text.
 
-            .text:
-              type: input.text
-              label: Button Text
-              description: Type in the button text.
+              .buttonicon:
+                type: input.icon
+                label: Button Icon
+                description: Select an icon for the button.
 
-            .buttonicon:
-              type: input.icon
-              label: Button Icon
-              description: Select an icon for the button.
+              .buttonstyle:
+                type: select.select
+                label: Button Style
+                description: Select the button style.
+                placeholder: 'Select...'
+                default: uk-button-default
+                options:
+                  uk-button-default: Default
+                  uk-button-primary: Primary
+                  uk-button-secondary: Secondary
+                  uk-button-danger: Danger
+                  uk-button-text: Text (typographic style)
+                  uk-button-link: Link (look like a link)
+                  jl-btn-transparent: Transparent
 
-            .buttonstyle:
-              type: select.select
-              label: Button Style
-              description: Select the button style.
-              placeholder: 'Select...'
-              default: uk-button-default
-              options:
-                uk-button-default: Default
-                uk-button-primary: Primary
-                uk-button-secondary: Secondary
-                uk-button-danger: Danger
-                uk-button-text: Text (typographic style)
-                uk-button-link: Link (look like a link)
-                jl-btn-transparent: Transparent
+              .link:
+                type: input.text
+                label: Button Link
+                description: Type in the URL.
 
-            .link:
-              type: input.text
-              label: Button Link
-              description: Type in the URL.
-
-            .target:
-              type: select.select
-              label: Target
-              description: Target browser window when item is clicked.
-              placeholder: 'Select...'
-              default: _parent
-              options:
-                _parent: Self
-                _blank: New Window
+              .target:
+                type: select.select
+                label: Target
+                description: Target browser window when item is clicked.
+                placeholder: 'Select...'
+                default: _parent
+                options:
+                  _parent: Self
+                  _blank: New Window
 
         .buttonsclass:
           type: input.text
