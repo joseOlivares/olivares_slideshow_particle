@@ -43,9 +43,9 @@
             {# aqui iba bloque set slide_overlay_background #}
 
             {% set title %}
-                <h3 class="uk-margin-remove" style="color:{{ item.titlecolor }}">
+                <h3 class="uk-margin-remove" >
                     {%- if item.link -%}
-                        <a target="{{ item.target|default('_parent')|e }}" href="{{ item.link|e }}">
+                        <a target="{{ item.target|default('_parent')|e }}" href="{{ item.link|e }}" style="color:{{ item.titlecolor }}">
                     {%- endif -%}
                         {{- gantry.platform.filter(item.title)|html|raw -}}
                     {%- if item.link -%}
