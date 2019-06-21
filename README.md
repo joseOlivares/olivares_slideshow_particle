@@ -19,6 +19,6 @@ What's new?
 3- Add the following code in your custom.scss file.
 
 	@import "dependencies";
-	@import "olivaresslideshow"; // Olivares Slideshow Particle
+	@import "olivaresslideshow"; /* Olivares Slideshow Particle */
 
   If the custom.scss file does not exists, you will need to create it manually. Also, make sure your custom.scss file has the @import "dependencies"; code at the very top.
