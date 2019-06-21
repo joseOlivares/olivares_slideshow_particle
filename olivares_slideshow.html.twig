@@ -13,10 +13,10 @@
 
         autoplay:{{ particle.autoplay|default("true")|e }},
         autoplay-interval:{{ particle.autoplayInterval|default(7000)|e }},
-        animation:{{ particle.animation|default('fade')|e }},
+        animation:'{{ particle.animation|default('fade')|e }}',
         duration:{{ particle.animationDuration|default(500)|e }},
         pause-on-hover:{{ particle.pauseOnHover|default("true")|e }},
-        min-height:{{ particle.height|default('auto')|e }}
+        min-height:'{{ particle.height|default('auto')|e }}'
 
 {%- endset -%}
 
@@ -24,19 +24,19 @@
     {% for item in particle.items %}
 
         {% set slide_media %}
-            {%- if item.image && item.kenburns == false -%}
+            {% if item.image and item.kenburns == false %}
                 <img alt="{{ item.alt|e }}" src="{{ url(item.image) }}" uk-cover>
-            {%- endif -%}
+            {% endif %}
 
-            {%- if item.image && item.kenburns == true -%} {# si efecto Kenburns es aplicado #}
+            {% if item.image and item.kenburns == true %} {# si efecto Kenburns es aplicado #}
               <div class="uk-position-cover uk-animation-kenburns {{ item.kenburnsEffects|raw }}">
                 <img alt="{{ item.alt|e }}" src="{{ url(item.image) }}" uk-cover>
               </div>
-            {%- endif -%}
+            {% endif %}
 
-            {%- if item.videoiframe -%}
+            {% if item.videoiframe %}
                 {{ item.videoiframe|raw }}
-            {%- endif -%}
+            {% endif %}
         {% endset %}
 
         {% set slide_overlay %}
@@ -73,7 +73,7 @@
                 </div>
             {% endset %}
 
-            <div class="uk-overlay {{ item.overlayposition }} {{item.overlaybackground}} uk-text-{{item.content_align|default('center')}} {{ item.overlaytransition|e }} {{ item.overlayclass|raw }} ">
+            <div class="uk-overlay {{ item.overlayposition }} {{ item.overlaybackground }} uk-text-{{ item.content_align|default('center') }} {{ item.overlaytransition|e }} {{ item.overlayclass|raw }} ">
               <!--  <div class=""> -->
                     {% if item.title %}
                         {{ title }}
@@ -100,17 +100,17 @@
 {% endset %}
 
 {% block particle %}
-    <div class="{% if particle.css.class %} {{ particle.css.class|e }}{% endif %}" {% if particle.extra %}{{ attr_extra|raw }}{% endif %}>
+     <div class="{% if particle.css.class %} {{ particle.css.class|e }}{% endif %}" {% if particle.extra %}{{ attr_extra|raw }} {% endif %}>
         <div class="uk-position-relative uk-visible-toggle uk-light {% if particle.navigation|default('arrows') == 'arrowsvisible' or particle.navigation|default('arrows') == 'bothvisible' %} nav-visible{% endif %}" tabindex="-1" uk-slideshow="{{ slideshow_settings }}" >
-            <ul class="uk-slideshow-items uk-overlay-active"  {% if particle.fullscreen|default(0) %} uk-height-viewport {% endif %} > <!-- Aqui se modifico el viewport -->
+            <ul class="uk-slideshow-items uk-overlay-active"  {% if particle.fullscreen|default(0) %} uk-height-viewport {% endif %} >
                 {{ slideshow_slides }}
             </ul>
 
             {% if (particle.navigation|default('arrows') == 'arrows') or (particle.navigation|default('arrows') == 'arrowsvisible') or (particle.navigation|default('arrows') == 'both') or (particle.navigation|default('arrows') == 'bothvisible') %}
-                <!-- <div class="uk-light"> -->
-                    <a class="uk-position-center-left uk-position-small uk-hidden-hover" style="background-color:{{ particle.arrowBackground }};" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
-                    <a class="uk-position-center-right uk-position-small uk-hidden-hover" style="background-color:{{ particle.arrowBackground }};" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
-                <!-- </div> -->
+
+                    <a class="uk-position-center-left uk-position-small uk-hidden-hover" style="background-color:{{ particle.arrowBackground|e }};" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+                    <a class="uk-position-center-right uk-position-small uk-hidden-hover" style="background-color:{{ particle.arrowBackground|e }};" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+
             {% endif %}
 
             {% if (particle.navigation|default('arrows') == 'dots') or (particle.navigation|default('arrows') == 'both') or (particle.navigation|default('arrows') == 'bothvisible') %}
