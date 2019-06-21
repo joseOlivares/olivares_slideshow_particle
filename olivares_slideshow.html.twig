@@ -63,7 +63,7 @@
             {% set buttons %}
                 <div class="{{ item.buttonsclass|raw }}">
                     {% for button in item.buttons %}
-                        <a class="button {{ button.buttonstyle|default('empty-light')|e }}" target="{{ button.target|default('_parent')|e }}" href="{{ button.link|e }}">
+                        <a class="uk-button {{ button.buttonstyle|default('uk-button-default')|e }}" target="{{ button.target|default('_parent')|e }}" href="{{ button.link|e }}">
                             {%- if button.buttonicon -%}
                                 <span class="{{ button.buttonicon|e }}"></span>
                             {%- endif -%}
