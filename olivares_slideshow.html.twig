@@ -1,4 +1,4 @@
-{% extends '@nucleus/partials/particle.html.twig' %}
+{% extends '@nucleus/partials/particle.html.twig' %} {# PROBLEMA RENDERIZANDO#}
 
 {% set attr_extra = '' %}
 {% if particle.extra %}
@@ -16,7 +16,7 @@
         animation:{{ particle.animation|default('fade')|e }},
         duration:{{ particle.animationDuration|default(500)|e }},
         pause-on-hover:{{ particle.pauseOnHover|default("true")|e }},
-        min-height:'{{ particle.height|default('auto')|e }}'
+        min-height:{{ particle.height|default('auto')|e }}
 
 {%- endset -%}
 
@@ -108,8 +108,8 @@
 
             {% if (particle.navigation|default('arrows') == 'arrows') or (particle.navigation|default('arrows') == 'arrowsvisible') or (particle.navigation|default('arrows') == 'both') or (particle.navigation|default('arrows') == 'bothvisible') %}
                 <!-- <div class="uk-light"> -->
-                    <a class="uk-position-center-left uk-position-small uk-hidden-hover" style="background-color:{% particle.arrowBackground %};" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
-                    <a class="uk-position-center-right uk-position-small uk-hidden-hover" style="background-color:{% particle.arrowBackground %};" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+                    <a class="uk-position-center-left uk-position-small uk-hidden-hover" style="background-color:{{ particle.arrowBackground }};" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+                    <a class="uk-position-center-right uk-position-small uk-hidden-hover" style="background-color:{{ particle.arrowBackground }};" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
                 <!-- </div> -->
             {% endif %}
 
