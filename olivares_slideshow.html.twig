@@ -73,8 +73,8 @@
                 </div>
             {% endset %}
 
-            <div class="uk-overlay {{ item.overlayposition }} {{ item.overlaybackground }} uk-text-{{ item.content_align|default('center') }} {{ item.overlaytransition|e }} {{ item.overlayclass|raw }} ">
-              <!--  <div class=""> -->
+            <div class="uk-overlay {{ item.overlayposition }} {{ item.overlaybackground }} uk-text-{{ item.content_align|default('center') }} {{ item.overlayclass|raw }} ">
+                <div class="{{ item.overlaytransition|e }}">   <!--  -->
                     {% if item.title %}
                         {{ title }}
                     {% endif %}
@@ -86,7 +86,7 @@
                     {% if item.buttons %}
                         {{ buttons }}
                     {% endif %}
-              <!--  </div> -->
+                  </div>   <!-- -->
             </div>
         {% endset %}
 
