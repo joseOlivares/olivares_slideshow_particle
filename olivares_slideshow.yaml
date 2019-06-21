@@ -216,12 +216,13 @@ form:
               placeholder: 'Select...'
               default: uk-button-default
               options:
-                uk-button-default: Default (transparent)
+                uk-button-default: Default
                 uk-button-primary: Primary
                 uk-button-secondary: Secondary
-                uk-button-danger: danger
+                uk-button-danger: Danger
                 uk-button-text: Text (typographic style)
                 uk-button-link: Link (look like a link)
+                jl-btn-transparent: Transparent
 
             .link:
               type: input.text
