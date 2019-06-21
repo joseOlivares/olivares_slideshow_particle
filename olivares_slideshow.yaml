@@ -19,32 +19,6 @@ form:
       class: alert alert-info
       content: '<strong>This Particle requires the "UIkit 3 for Gantry5" Atom to be loaded.</strong>'
 
-    mainheading:
-      type: input.text
-      label: Title
-      description: Type in the title.
-      placeholder: 'Enter Title'
-      default: ''
-
-    introtext:
-      type: textarea.textarea
-      label: Intro Text
-      description: Type in the intro text.
-      placeholder: 'Enter Intro Text'
-      default: ''
-
-    particleintro_bg:
-      type: select.select
-      label: Particle intro BG Color
-      description: Select the background color for Title and Intro.
-      placeholder: 'Select...'
-      default: default
-      options:
-        default: Default
-        muted: Muted
-        primary: Primary
-        secondary: Secondary
-
     height:
       type: input.text
       label: Slideshow Height

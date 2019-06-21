@@ -9,37 +9,6 @@
     {% endfor %}
 {% endif %}
 
-{% set slide_title_color %}
-
-    {%- if particle.particleintro_bg|default('default') == 'default' -%}
-        jl-text-dark
-    {%- endif -%}
-
-    {%- if particle.particleintro_bg|default('default') == 'muted' -%}
-        jl-text-dark
-    {%- endif -%}
-
-    {%- if particle.particleintro_bg|default('default') == 'primary' -%}
-        jl-text-light
-    {%- endif -%}
-
-    {%- if particle.particleintro_bg|default('default') == 'secondary' -%}
-        jl-text-light
-    {%- endif -%}
-
-{% endset %}
-
-
-{% set particleheading %}
-    <div class="jl-particle-intro uk-background-{{particle.particleintro_bg|default('default')}}">
-        {% if particle.mainheading %}
-            <h3 class="jl-slide-title {{slide_title_color}}">{{ particle.mainheading|raw }}</h3>
-            <div class="g-title-separator {% if particle.introtext == false %}no-intro-text{% endif %}"></div>
-        {% endif %}
-        {% if particle.introtext %}<p class="jl-slide-introtxt {{slide_title_color}}">{{ particle.introtext|raw }}</p>{% endif %}
-    </div>
-{% endset %}
-
 {%- set slideshow_settings -%} {# parametros de configuracion slideshow #}
 
         autoplay:{{ particle.autoplay|default("true")|e }},
@@ -132,11 +101,8 @@
 
 {% block particle %}
     <div class="{% if particle.css.class %} {{ particle.css.class|e }}{% endif %}" {% if particle.extra %}{{ attr_extra|raw }}{% endif %}>
-        {% if particle.mainheading or particle.introtext %}
-            {{ particleheading }}
-        {% endif %}
-        <div class="uk-position-relative uk-visible-toggle uk-light {% if particle.fullscreen|default(0) %} fullscreen{% endif %}{% if particle.navigation|default('arrows') == 'arrowsvisible' or particle.navigation|default('arrows') == 'bothvisible' %} nav-visible{% endif %}" tabindex="-1" uk-slideshow="{{ slideshow_settings }}" >
-            <ul class="uk-slideshow-items uk-overlay-active" {% if particle.fullscreen|default(0) %} uk-height-viewport="offset-top: true"{% endif %}>
+        <div class="uk-position-relative uk-visible-toggle uk-light {% if particle.navigation|default('arrows') == 'arrowsvisible' or particle.navigation|default('arrows') == 'bothvisible' %} nav-visible{% endif %}" tabindex="-1" uk-slideshow="{{ slideshow_settings }}" >
+            <ul class="uk-slideshow-items uk-overlay-active"  {% if particle.fullscreen|default(0) %} uk-height-viewport {% endif %} > <!-- Aqui se modifico el viewport -->
                 {{ slideshow_slides }}
             </ul>
 
