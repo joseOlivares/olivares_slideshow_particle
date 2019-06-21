@@ -13,10 +13,10 @@
 
         autoplay:{{ particle.autoplay|default("true")|e }},
         autoplay-interval:{{ particle.autoplayInterval|default(7000)|e }},
-        animation:'{{ particle.animation|default('fade')|e }}',
+        animation:{{ particle.animation|default('fade')|e }},
         duration:{{ particle.animationDuration|default(500)|e }},
         pause-on-hover:{{ particle.pauseOnHover|default("true")|e }},
-        min-height:'{{ particle.height|default('auto')|e }}'
+        min-height:{{ particle.height|default('auto')|e }}
 
 {%- endset -%}
 
