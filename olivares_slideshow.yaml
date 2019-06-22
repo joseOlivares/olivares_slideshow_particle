@@ -58,8 +58,8 @@ form:
 
     arrowBackground:
       type: input.text
-      label: Arrows background color
-      description: Write the navigation arrow background color, "Ex.:#0d0b1c3b".
+      label: Arrows background color Ex.: #0d0b1c3b
+      description: Write the navigation arrow background color "Ex.:#0d0b1c3b".
       placeholder: 'Ex.: #0d0b1c3b'
       default: transparent
 
@@ -169,9 +169,9 @@ form:
           label: Link type
           description: Define the link type to apply.
           placeholder: 'Select...'
-          default: uk-button-text
+          default: uk-button uk-button-text
           options:
-            uk-button-text: button text effect
+            uk-button uk-button-text: button text effect
             uk-link-reset: link reset
             jl-nothing: Normal
 
