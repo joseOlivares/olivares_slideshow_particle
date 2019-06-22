@@ -73,21 +73,26 @@
                 </div>
             {% endset %}
 
-            <div class="uk-overlay {{ item.overlayposition }} {{ item.overlaybackground }} uk-text-{{ item.content_align|default('center') }} {{ item.overlayclass|raw }} ">
-                <div class="{{ item.overlaytransition|e }}">   <!--  -->
-                    {% if item.title %}
-                        {{ title }}
-                    {% endif %}
+            {% if item.overlayposition == 'uk-position-center'  %}
+              <!-- forcing horizontal centering using my custom class jl-force-hcenter-->
+              <div class="uk-overlay {{ item.overlayposition }} {{ item.overlaytransition|e }} {{ item.overlaybackground }} uk-text-{{ item.content_align|default('center') }} {{ item.overlayclass|raw }} jl-force-hcenter">
+            {% else %}
+              <div class="uk-overlay {{ item.overlayposition }} {{ item.overlaytransition|e }} {{ item.overlaybackground }} uk-text-{{ item.content_align|default('center') }} {{ item.overlayclass|raw }}">
+            {% endif %}
+                  <div class="">   <!-- en class iba item.overlaytransition|e y se quitaba del div padre para que el centrado funcionarabien  -->
+                      {% if item.title %}
+                          {{ title }}
+                      {% endif %}
 
-                    {% if item.description %}
-                        {{ description }}
-                    {% endif %}
+                      {% if item.description %}
+                          {{ description }}
+                      {% endif %}
 
-                    {% if item.buttons %}
-                        {{ buttons }}
-                    {% endif %}
-                  </div>   <!-- -->
-            </div>
+                      {% if item.buttons %}
+                          {{ buttons }}
+                      {% endif %}
+                    </div>   <!-- -->
+              </div>
         {% endset %}
 
         <li class="{% if item.class %} {{ item.class|e }}{% endif %}">
