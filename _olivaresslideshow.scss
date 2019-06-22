@@ -6,8 +6,18 @@
   background-color: transparent;
   border: 2px solid #f2ebeb;
   &:hover{
-    background-color: rgba(255, 243, 255, 0.4);
+    /*background-color: rgba(255, 243, 255, 0.4);*/
+    background: lighten($accent-color-1, 8%); /* $accent-color-1 se lee del template de gantry  */
+    border-color: lighten($accent-color-1, 8%);
   }
+}
+
+.jl-btn-default{
+    &:hover{
+      /*background-color: rgba(255, 243, 255, 0.4);*/
+      background: lighten($accent-color-1, 8%); /* $accent-color-1 se lee del template de gantry  */
+      border-color: lighten($accent-color-1, 8%);
+    }
 }
 
 .jl-force-hcenter{

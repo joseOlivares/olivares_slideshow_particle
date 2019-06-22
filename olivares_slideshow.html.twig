@@ -63,12 +63,16 @@
             {% set buttons %}
                 <div class="{{ item.buttonsclass|raw }}">
                     {% for button in item.buttons %}
-                        <a class="uk-button {{ button.buttonstyle|default('uk-button-default')|e }}" target="{{ button.target|default('_parent')|e }}" href="{{ button.link|e }}">
-                            {%- if button.buttonicon -%}
-                                <span class="{{ button.buttonicon|e }}"></span>
-                            {%- endif -%}
-                            {{- button.text|raw -}}
-                        </a>
+                      {% if button.buttonstyle == 'uk-button-default'  %} {#se le agrega la clase jl-btn-default #}
+                          <a class="uk-button {{ button.buttonstyle|e }} jl-btn-default " target="{{ button.target|default('_parent')|e }}" href="{{ button.link|e }}">
+                      {% else %}
+                          <a class="uk-button {{ button.buttonstyle|default('uk-button-default')|e }}" target="{{ button.target|default('_parent')|e }}" href="{{ button.link|e }}">
+                      {% endif %}
+                              {%- if button.buttonicon -%}
+                                  <span class="{{ button.buttonicon|e }}"></span>
+                              {%- endif -%}
+                              {{- button.text|raw -}}
+                          </a>
                     {% endfor %}
                 </div>
             {% endset %}
@@ -79,7 +83,7 @@
             {% else %}
               <div class="uk-overlay {{ item.overlayposition }} {{ item.overlaytransition|e }} {{ item.overlaybackground }} uk-text-{{ item.content_align|default('center') }} {{ item.overlayclass|raw }}">
             {% endif %}
-                  <div class="">   <!-- en class iba item.overlaytransition|e y se quitaba del div padre para que el centrado funcionarabien  -->
+                  <div class="">   {#  en class iba item.overlaytransition|e y se quitaba del div padre para que el centrado funcionarabien  #}
                       {% if item.title %}
                           {{ title }}
                       {% endif %}
