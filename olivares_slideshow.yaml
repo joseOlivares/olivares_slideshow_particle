@@ -251,15 +251,22 @@ form:
               description: Define uk-scroll properties, ex offset:50.
               default: offset:0
 
+            .btntextcolor:
+              type: input.colorpicker
+              label: Button text custom color
+              description: Define the custom color for button text.
+              placeholder: 'opcional'
+
         .buttonsclass:
-          type: input.text
+          type: input.selectize
           label: Div Button classes applied
+          description: Define the classes for the Div where button is contained.
           default: uk-margin-remove
 
         .overlayclass:
           type: input.selectize
           label: Ovarlay CSS Class
-          description: CSS classes for Overlay Div.
+          description: Define CSS classes for the Overlay Div.
 
         .overlaybackground:
           type: select.select
