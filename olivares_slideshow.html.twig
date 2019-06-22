@@ -45,7 +45,7 @@
             {% set title %}
                 <h3 class="uk-margin-remove" >
                     {%- if item.link -%}
-                        <a target="{{ item.target|default('_parent')|e }}" href="{{ item.link|e }}" class="{{ item.linktype }}" {% if item.titlecolor %}  style="color:{{ item.titlecolor }}" {% endif %} >
+                        <a href="{{ item.link|e }}" target="{{ item.target|default('_parent')|raw }}" class="{{ item.linktype }}" {% if item.titlecolor %}  style="color:{{ item.titlecolor }}" {% endif %} >
                     {%- endif -%}
                         {{- gantry.platform.filter(item.title)|html|raw -}}
                     {%- if item.link -%}

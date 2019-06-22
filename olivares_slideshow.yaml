@@ -164,17 +164,6 @@ form:
           type: input.text
           label: Title Link
 
-        .linktype:
-          type: select.select
-          label: Link type
-          description: Define the link type to apply.
-          placeholder: 'Select...'
-          default: uk-button uk-button-text
-          options:
-            uk-button uk-button-text: button text effect
-            uk-link-reset: link reset
-            jl-nothing: Normal
-
         .target:
           type: select.select
           label: Target
@@ -185,6 +174,17 @@ form:
             _parent: Self
             _blank: New Window
 
+        .linktype:
+          type: select.select
+          label: Link type
+          description: Define the link type to apply.
+          placeholder: 'Select...'
+          default: uk-button uk-button-text
+          options:
+            uk-button uk-button-text: button text effect
+            uk-link-reset: link reset
+            jl-nothing: Normal
+            
         .description:
           type: textarea.textarea
           label: Description
