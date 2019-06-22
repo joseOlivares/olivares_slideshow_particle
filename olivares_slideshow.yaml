@@ -164,6 +164,17 @@ form:
           type: input.text
           label: Title Link
 
+        .linktype:
+          type: select.select
+          label: Link type
+          description: Define the link type to apply.
+          placeholder: 'Select...'
+          default: uk-button-text
+          options:
+            uk-button-text: button text effect
+            uk-link-reset: link reset
+            jl-nothing: Normal
+
         .target:
           type: select.select
           label: Target
@@ -183,8 +194,9 @@ form:
           label: Description text custom color
 
         .descriptclass:
-          type: input.text
+          type: input.selectize
           label: Description Text classes applied
+          description: Define the classes you want to apply to description
           default: uk-margin-remove
 
         .content_align:
