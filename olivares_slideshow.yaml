@@ -184,7 +184,7 @@ form:
             uk-button uk-button-text: button text effect
             uk-link-reset: link reset
             jl-nothing: Normal
-            
+
         .description:
           type: textarea.textarea
           label: Description
@@ -259,7 +259,7 @@ form:
 
             .ukscrollbtn:
               type: input.selectize
-              label: uk-scroll properties
+              label: uk-scroll properties (leave blank for real links)
               description: Define uk-scroll properties, ex offset:50.
               default: offset:0
 

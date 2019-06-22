@@ -64,9 +64,9 @@
                 <div class="{{ item.buttonsclass|raw }}">
                     {% for button in item.buttons %}
                       {% if button.buttonstyle == 'uk-button-default'  %} {#se le agrega la clase jl-btn-default #}
-                          <a class="uk-button {{ button.buttonstyle|e }} jl-btn-default" target="{{ button.target|default('_parent')|e }}" href="{{ button.link|e }}" uk-scroll="{{ button.ukscrollbtn|e }}" {% if button.btntextcolor %} style="color:{{ button.btntextcolor|e }}" {% endif %} >
+                          <a class="uk-button {{ button.buttonstyle|e }} jl-btn-default" target="{{ button.target|default('_parent')|e }}" href="{{ button.link|e }}" {% if button.ukscrollbtn %} uk-scroll="{{ button.ukscrollbtn|e }}" {% endif %} {% if button.btntextcolor %} style="color:{{ button.btntextcolor|e }}" {% endif %} >
                       {% else %}
-                          <a class="uk-button {{ button.buttonstyle|default('uk-button-default')|e }}" target="{{ button.target|default('_parent')|e }}" href="{{ button.link|e }}" uk-scroll="{{ button.ukscrollbtn|e }}" {% if button.btntextcolor %} style="color:{{ button.btntextcolor|e }}" {% endif %}>
+                          <a class="uk-button {{ button.buttonstyle|default('uk-button-default')|e }}" target="{{ button.target|default('_parent')|e }}" href="{{ button.link|e }}" {% if button.ukscrollbtn %} uk-scroll="{{ button.ukscrollbtn|e }}" {% endif %} {% if button.btntextcolor %} style="color:{{ button.btntextcolor|e }}" {% endif %}>
                       {% endif %}
                               {%- if button.buttonicon -%}
                                   <span class="{{ button.buttonicon|e }}"></span>
