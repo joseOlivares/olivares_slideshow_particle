@@ -58,8 +58,8 @@ form:
 
     arrowBackground:
       type: input.text
-      label: Arrows background color Ex.: #0d0b1c3b
-      description: Write the navigation arrow background color "Ex.:#0d0b1c3b".
+      label: 'Arrows background color ex. #0d0b1c3b'
+      description: 'Write the navigation arrow background color ex #0d0b1c3b'.
       placeholder: 'Ex.: #0d0b1c3b'
       default: transparent
 
