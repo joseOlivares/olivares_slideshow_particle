@@ -245,6 +245,12 @@ form:
                 _parent: Self
                 _blank: New Window
 
+            .ukscrollbtn:
+              type: input.selectize
+              label: uk-scroll properties
+              description: Define uk-scroll properties, ex offset:50.
+              default: offset:0
+
         .buttonsclass:
           type: input.text
           label: Div Button classes applied
