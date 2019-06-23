@@ -138,10 +138,10 @@ form:
             false: Disabled
 
         .kenburnsEffects:
-          type: input.text
+          type: input.selectize
           label: Kenburns Effect options
           description: Set the Kenburns effect options (see UIkit docs).
-          default: uk-animation-reverse uk-transform-origin-center-left
+          default: uk-animation-reverse, uk-transform-origin-center-left
 
         .videoiframe:
           type: textarea.textarea
