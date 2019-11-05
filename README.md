@@ -1,7 +1,7 @@
 # olivares_slideshow_particle
 SlideShow particle for Gantry 5 (Joomla), using UIkit 3
 
-Hi my name is Jose Olivares, this is my new version of the slideshow Gantry 5 particle. Please endorse my skills on Linkedin (https://www.linkedin.com/in/jolivaress/)
+Hi my name is Jose Olivares, this is my new version of the slideshow Gantry 5 particle. Please endorse my skills on Linkedin (https://www.linkedin.com/in/jolivaress/)   You can see an example in this website I made (http://mystudygo.com)
 
 What's new?
 
