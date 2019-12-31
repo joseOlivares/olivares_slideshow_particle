@@ -269,6 +269,12 @@ form:
               description: Define the custom color for button text.
               placeholder: 'opcional'
 
+            .btnclass:
+              type: input.selectize
+              label: Classes to be applied to the button
+              description: Define the classes for this button.
+              default: uk-margin-remove              
+
         .buttonsclass:
           type: input.selectize
           label: Div Button classes applied
