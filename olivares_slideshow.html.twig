@@ -17,7 +17,9 @@
         duration:{{ particle.animationDuration|default(500)|e }};
         pause-on-hover:{{ particle.pauseOnHover|default("true")|e }};
         min-height:{{ particle.height|default('auto')|e }};
-
+        {% if particle.imageratio != 0 %} {# se usará solo cuando el slideshow no sea fullscreen #}
+        ratio:{{particle.imageratio|default('16:9')}};
+        {% endif %}
 {%- endset -%}
 
 {% set slideshow_slides %}

@@ -99,6 +99,12 @@ form:
       description: Make the Slideshow fullscreen that stretches to fill the entire viewport.
       default: 0
 
+    imageratio:
+      type: input.text
+      label: Define the slideshow images ratio (optional)
+      description: Ex. images width 800px height 600px, write 800:600 (usually for small slideshows).
+      default: 0
+
     css.class:
       type: input.selectize
       label: CSS Classes
