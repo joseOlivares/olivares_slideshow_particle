@@ -1,4 +1,4 @@
-{% extends '@nucleus/partials/particle.html.twig' %} {# PROBLEMA RENDERIZANDO#}
+{% extends '@nucleus/partials/particle.html.twig' %} 
 
 {% set attr_extra = '' %}
 {% if particle.extra %}
@@ -24,89 +24,90 @@
 
 {% set slideshow_slides %}
     {% for item in particle.items %}
+        {% if item.enabledSlide == true %}
+            {% set slide_media %}
+                {% if item.image and item.kenburns == false %}
+                    <img alt="{{ item.alt|e }}" src="{{ url(item.image) }}" uk-cover>
+                {% endif %}
 
-        {% set slide_media %}
-            {% if item.image and item.kenburns == false %}
-                <img alt="{{ item.alt|e }}" src="{{ url(item.image) }}" uk-cover>
-            {% endif %}
+                {% if item.image and item.kenburns == true %} {# si efecto Kenburns es aplicado #}
+                  <div class="uk-position-cover uk-animation-kenburns {{ item.kenburnsEffects|raw }}">
+                    <img alt="{{ item.alt|e }}" src="{{ url(item.image) }}" uk-cover>
+                  </div>
+                {% endif %}
 
-            {% if item.image and item.kenburns == true %} {# si efecto Kenburns es aplicado #}
-              <div class="uk-position-cover uk-animation-kenburns {{ item.kenburnsEffects|raw }}">
-                <img alt="{{ item.alt|e }}" src="{{ url(item.image) }}" uk-cover>
-              </div>
-            {% endif %}
-
-            {% if item.videoiframe %}
-                {{ item.videoiframe|raw }}
-            {% endif %}
-        {% endset %}
-
-        {% set slide_overlay %}
-            {# aqui iba bloque set slide_overlay_background #}
-
-            {% set title %}
-                <h3 class="uk-margin-remove" >
-                    {%- if item.link -%}
-                        <a href="{{ item.link|e }}" target="{{ item.target|default('_parent')|raw }}" class="{{ item.linktype }}" {% if item.titlecolor %}  style="color:{{ item.titlecolor }}" {% endif %} >
-                    {%- endif -%}
-                        {{- gantry.platform.filter(item.title)|html|raw -}}
-                    {%- if item.link -%}
-                        </a>
-                    {%- endif -%}
-                </h3>
+                {% if item.videoiframe %}
+                    {{ item.videoiframe|raw }}
+                {% endif %}
             {% endset %}
 
-            {% set description %}
-                <div class="{{ item.descriptclass|raw }}" {% if item.descriptcolor %} style="color:{{ item.descriptcolor }}" {% endif %}>
-                    {{- gantry.platform.filter(item.description)|html|raw -}}
-                </div>
+            {% set slide_overlay %}
+                {# aqui iba bloque set slide_overlay_background #}
+
+                {% set title %}
+                    <h3 class="uk-margin-remove" >
+                        {%- if item.link -%}
+                            <a href="{{ item.link|e }}" target="{{ item.target|default('_parent')|raw }}" class="{{ item.linktype }}" {% if item.titlecolor %}  style="color:{{ item.titlecolor }}" {% endif %} >
+                        {%- endif -%}
+                            {{- gantry.platform.filter(item.title)|html|raw -}}
+                        {%- if item.link -%}
+                            </a>
+                        {%- endif -%}
+                    </h3>
+                {% endset %}
+
+                {% set description %}
+                    <div class="{{ item.descriptclass|raw }}" {% if item.descriptcolor %} style="color:{{ item.descriptcolor }}" {% endif %}>
+                        {{- gantry.platform.filter(item.description)|html|raw -}}
+                    </div>
+                {% endset %}
+
+                {% set buttons %}
+                    <div class="{{ item.buttonsclass|raw }}">
+                        {% for button in item.buttons %}
+                          {% if button.buttonstyle == 'uk-button-default'  %} {#se le agrega la clase jl-btn-default #}
+                              <a class="uk-button {{ button.buttonstyle|e }} jl-btn-default {{ button.btnclass|e }}" target="{{ button.target|default('_parent')|e }}" href="{{ button.link|e }}" {% if button.ukscrollbtn %} uk-scroll="{{ button.ukscrollbtn|e }}" {% endif %} {% if button.btntextcolor %} style="color:{{ button.btntextcolor|e }}" {% endif %} >
+                          {% else %}
+                              <a class="uk-button {{ button.buttonstyle|default('uk-button-default')|e }} {{ button.btnclass|e }}" target="{{ button.target|default('_parent')|e }}" href="{{ button.link|e }}" {% if button.ukscrollbtn %} uk-scroll="{{ button.ukscrollbtn|e }}" {% endif %} {% if button.btntextcolor %} style="color:{{ button.btntextcolor|e }}" {% endif %}>
+                          {% endif %}
+                                  {%- if button.buttonicon -%}
+                                      <span class="{{ button.buttonicon|e }}"></span>
+                                  {%- endif -%}
+                                  {{- button.text|raw -}}
+                              </a>
+                        {% endfor %}
+                    </div>
+                {% endset %}
+
+                {% if item.overlayposition == 'uk-position-center'  %}
+                  <!-- forcing horizontal centering using my custom class jl-force-hcenter-->
+                  <div class="uk-overlay {{ item.overlayposition }} {{ item.overlaytransition|e }} {{ item.overlaybackground }} uk-text-{{ item.content_align|default('center') }} {{ item.overlayclass|raw }} jl-force-hcenter">
+                {% else %}
+                  <div class="uk-overlay {{ item.overlayposition }} {{ item.overlaytransition|e }} {{ item.overlaybackground }} uk-text-{{ item.content_align|default('center') }} {{ item.overlayclass|raw }}">
+                {% endif %}
+                      <div class="">   {#  en class iba item.overlaytransition|e y se quitaba del div padre para que el centrado funcionara bien  #}
+                          {% if item.title %}
+                              {{ title }}
+                          {% endif %}
+
+                          {% if item.description %}
+                              {{ description }}
+                          {% endif %}
+
+                          {% if item.buttons %}
+                              {{ buttons }}
+                          {% endif %}
+                        </div>   <!-- -->
+                  </div>
             {% endset %}
 
-            {% set buttons %}
-                <div class="{{ item.buttonsclass|raw }}">
-                    {% for button in item.buttons %}
-                      {% if button.buttonstyle == 'uk-button-default'  %} {#se le agrega la clase jl-btn-default #}
-                          <a class="uk-button {{ button.buttonstyle|e }} jl-btn-default {{ button.btnclass|e }}" target="{{ button.target|default('_parent')|e }}" href="{{ button.link|e }}" {% if button.ukscrollbtn %} uk-scroll="{{ button.ukscrollbtn|e }}" {% endif %} {% if button.btntextcolor %} style="color:{{ button.btntextcolor|e }}" {% endif %} >
-                      {% else %}
-                          <a class="uk-button {{ button.buttonstyle|default('uk-button-default')|e }} {{ button.btnclass|e }}" target="{{ button.target|default('_parent')|e }}" href="{{ button.link|e }}" {% if button.ukscrollbtn %} uk-scroll="{{ button.ukscrollbtn|e }}" {% endif %} {% if button.btntextcolor %} style="color:{{ button.btntextcolor|e }}" {% endif %}>
-                      {% endif %}
-                              {%- if button.buttonicon -%}
-                                  <span class="{{ button.buttonicon|e }}"></span>
-                              {%- endif -%}
-                              {{- button.text|raw -}}
-                          </a>
-                    {% endfor %}
-                </div>
-            {% endset %}
-
-            {% if item.overlayposition == 'uk-position-center'  %}
-              <!-- forcing horizontal centering using my custom class jl-force-hcenter-->
-              <div class="uk-overlay {{ item.overlayposition }} {{ item.overlaytransition|e }} {{ item.overlaybackground }} uk-text-{{ item.content_align|default('center') }} {{ item.overlayclass|raw }} jl-force-hcenter">
-            {% else %}
-              <div class="uk-overlay {{ item.overlayposition }} {{ item.overlaytransition|e }} {{ item.overlaybackground }} uk-text-{{ item.content_align|default('center') }} {{ item.overlayclass|raw }}">
-            {% endif %}
-                  <div class="">   {#  en class iba item.overlaytransition|e y se quitaba del div padre para que el centrado funcionarabien  #}
-                      {% if item.title %}
-                          {{ title }}
-                      {% endif %}
-
-                      {% if item.description %}
-                          {{ description }}
-                      {% endif %}
-
-                      {% if item.buttons %}
-                          {{ buttons }}
-                      {% endif %}
-                    </div>   <!-- -->
-              </div>
-        {% endset %}
-
-        <li class="{% if item.class %} {{ item.class|e }}{% endif %}">
-                {{ slide_media }}
-            {% if item.title or item.description or item.buttons %}
-                {{ slide_overlay }}
-            {% endif %}
-        </li>
+            <li class="{% if item.class %} {{ item.class|e }}{% endif %}">
+                    {{ slide_media }}
+                {% if item.title or item.description or item.buttons %}
+                    {{ slide_overlay }}
+                {% endif %}
+            </li>
+        {% endif %}  
     {% endfor %}
 {% endset %}
 

@@ -128,6 +128,12 @@ form:
       ajax: true
 
       fields:
+        .enabledSlide:
+          type: enable.enable
+          label: Enabled
+          description: Enabled/Disabled this Slide
+          default: true
+
         .image:
           type: input.imagepicker
           label: Image
