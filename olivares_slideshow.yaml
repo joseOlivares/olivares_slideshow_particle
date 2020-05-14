@@ -168,6 +168,17 @@ form:
           type: input.text
           label: Title
 
+        .titleHeading:
+          type: select.select
+          label: Title heading
+          description: Define title heading
+          placeholder: 'Select...'
+          default: 3
+          options:
+            1: h1
+            2: h2
+            3: h3                
+
         .titlecolor:
           type: input.colorpicker
           label: Title custom color

@@ -9,7 +9,7 @@
     {% endfor %}
 {% endif %}
 
-{%- set slideshow_settings -%} {# parametros de configuracion slideshow #}
+{% set slideshow_settings %} {# parametros de configuracion slideshow #}
 
         autoplay:{{ particle.autoplay|default("true")|e }};
         autoplay-interval:{{ particle.autoplayInterval|default(7000)|e }};
@@ -20,7 +20,7 @@
         {% if particle.imageratio != 0 %} {# se usará solo cuando el slideshow no sea fullscreen #}
         ratio:{{particle.imageratio|default('16:9')}};
         {% endif %}
-{%- endset -%}
+{% endset %}
 
 {% set slideshow_slides %}
     {% for item in particle.items %}
@@ -42,23 +42,22 @@
             {% endset %}
 
             {% set slide_overlay %}
-                {# aqui iba bloque set slide_overlay_background #}
-
+                {# aqui iba bloque set slide_overlay_background #}                
                 {% set title %}
-                    <h3 class="uk-margin-remove" >
-                        {%- if item.link -%}
-                            <a href="{{ item.link|e }}" target="{{ item.target|default('_parent')|raw }}" class="{{ item.linktype }}" {% if item.titlecolor %}  style="color:{{ item.titlecolor }}" {% endif %} >
-                        {%- endif -%}
-                            {{- gantry.platform.filter(item.title)|html|raw -}}
-                        {%- if item.link -%}
-                            </a>
-                        {%- endif -%}
-                    </h3>
+                    <h{{gantry.platform.filter(item.titleHeading)|raw }} class="uk-margin-remove" {% if item.titlecolor %} style="color:{{ item.titlecolor|e }}" {% endif %}>  
+                      {% if item.link %}
+                          <a href="{{ item.link|e }}" target="{{ item.target|default('_parent')|raw }}" class="{{ item.linktype }}" {% if item.titlecolor %}  style="color:{{ item.titlecolor|e }}" {% endif %} >
+                      {% endif %}
+                          {{ gantry.platform.filter(item.title)|html|raw }}
+                      {% if item.link %}
+                          </a>
+                      {% endif %}
+                    </h{{ gantry.platform.filter(item.titleHeading)|raw }}>
                 {% endset %}
 
                 {% set description %}
                     <div class="{{ item.descriptclass|raw }}" {% if item.descriptcolor %} style="color:{{ item.descriptcolor }}" {% endif %}>
-                        {{- gantry.platform.filter(item.description)|html|raw -}}
+                        {{ gantry.platform.filter(item.description)|html|raw }}
                     </div>
                 {% endset %}
 
@@ -70,10 +69,10 @@
                           {% else %}
                               <a class="uk-button {{ button.buttonstyle|default('uk-button-default')|e }} {{ button.btnclass|e }}" target="{{ button.target|default('_parent')|e }}" href="{{ button.link|e }}" {% if button.ukscrollbtn %} uk-scroll="{{ button.ukscrollbtn|e }}" {% endif %} {% if button.btntextcolor %} style="color:{{ button.btntextcolor|e }}" {% endif %}>
                           {% endif %}
-                                  {%- if button.buttonicon -%}
+                                  {% if button.buttonicon %}
                                       <span class="{{ button.buttonicon|e }}"></span>
-                                  {%- endif -%}
-                                  {{- button.text|raw -}}
+                                  {% endif %}
+                                  {{ button.text|raw }}
                               </a>
                         {% endfor %}
                     </div>
